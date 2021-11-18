@@ -1,8 +1,8 @@
 # Game-Jam
 Go Chicken Go!
 
-Featues:
-- A certain number of chickens which can run.
+Features:
+- A certain number of chickens that can run.
 - Random cars passing the streets.
 - A river in between carrying tree trunks.
 - Random plumages for chicken's acceleration.
