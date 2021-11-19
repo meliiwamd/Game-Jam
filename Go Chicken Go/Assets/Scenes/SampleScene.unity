@@ -2848,7 +2848,7 @@ MonoBehaviour:
   tree: {fileID: 3305887858739961038, guid: e0cb1d671e5854f43a870800fa58e374, type: 3}
   treeRight: {fileID: 3082119332471335779, guid: a792484f156476a418080afdd954174b,
     type: 3}
-  timerMaxTime: 2
+  timerMaxTime: 3
   player: {fileID: 910425968}
 --- !u!1 &1140729731
 GameObject:
@@ -4581,7 +4581,7 @@ MonoBehaviour:
   tree: {fileID: 3305887858739961038, guid: e0cb1d671e5854f43a870800fa58e374, type: 3}
   treeRight: {fileID: 3082119332471335779, guid: a792484f156476a418080afdd954174b,
     type: 3}
-  timerMaxTime: 2
+  timerMaxTime: 3
   player: {fileID: 910425968}
 --- !u!1 &1741932760
 GameObject:
