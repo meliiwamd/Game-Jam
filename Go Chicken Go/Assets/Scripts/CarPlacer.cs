@@ -11,6 +11,8 @@ public class CarPlacer : MonoBehaviour
     private float currentTimerValue;
     public float timerDimondMaxTime;
     private float currentDimondTimerValue;
+
+    public PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,39 +23,42 @@ public class CarPlacer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentTimerValue > 0)
+        if (player.chickenCount > 0)
         {
-            currentTimerValue -= Time.deltaTime;
-        }
-        else
-        {
-            GameObject go;
-
-            if (UnityEngine.Random.Range(0, 2000) % 5 != 0)
+            if (currentTimerValue > 0)
             {
-                go = Instantiate(prefabs[GetRandomPrefabType(prefabs.Length)]);
-                if (transform.position.x  < 0)
-                    go.transform.position = new Vector3(GetRandomPrefabInitialXLeft(), transform.position.y, transform.position.z);
-                else
-                    go.transform.position = new Vector3(GetRandomPrefabInitialXRight(), transform.position.y, transform.position.z);
+                currentTimerValue -= Time.deltaTime;
             }
+            else
+            {
+                GameObject go;
 
-            // reset timer
-            currentTimerValue = timerMaxTime;
-        }
-        if (currentDimondTimerValue > 0)
-        {
-            currentDimondTimerValue -= Time.deltaTime;
-        }
-        else
-        {
-            GameObject go;
+                if (UnityEngine.Random.Range(0, 2000) % 5 != 0)
+                {
+                    go = Instantiate(prefabs[GetRandomPrefabType(prefabs.Length)]);
+                    if (transform.position.x < 0)
+                        go.transform.position = new Vector3(GetRandomPrefabInitialXLeft(), transform.position.y, transform.position.z);
+                    else
+                        go.transform.position = new Vector3(GetRandomPrefabInitialXRight(), transform.position.y, transform.position.z);
+                }
 
-            go = Instantiate(plumage);
-            go.transform.position = new Vector3(GetRandomDimond(-3, 3), GetRandomDimond(-3, 3), transform.position.z);
+                // reset timer
+                currentTimerValue = timerMaxTime;
+            }
+            if (currentDimondTimerValue > 0)
+            {
+                currentDimondTimerValue -= Time.deltaTime;
+            }
+            else
+            {
+                GameObject go;
 
-            // reset timer
-            currentDimondTimerValue = timerDimondMaxTime;
+                go = Instantiate(plumage);
+                go.transform.position = new Vector3(GetRandomDimond(-3, 3), GetRandomDimond(-3, 3), transform.position.z);
+
+                // reset timer
+                currentDimondTimerValue = timerDimondMaxTime;
+            }
         }
     }
 

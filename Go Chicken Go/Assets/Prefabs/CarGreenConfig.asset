@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5debce97f64ac64e98a435a51b024b1, type: 3}
   m_Name: CarGreenConfig
   m_EditorClassIdentifier: 
-  speed: 0.04
-  direction: -1
+  speed: 0.01
+  direction: 1

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float factor = 0.01f;
 
     private bool newChicken = false;
-    public int chickenCount = 25;
+    public int chickenCount = 3;
 
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
@@ -37,76 +37,82 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        jumpVector = new Vector3(transform.position.x + 1, transform.position.y, 0);
-
-        if (updateSpeed)
+        if(chickenCount > 0)
         {
-            if(updateSpeeCurrentTime > 0)
+            jumpVector = new Vector3(transform.position.x + 1, transform.position.y, 0);
+
+            if (updateSpeed)
             {
-                updateSpeeCurrentTime -= Time.deltaTime;
-                factor = 0.04f;
-                moveVectorHorizontal = new Vector3(1 * factor, 0, 0);
-                moveVectorVertical = new Vector3(0, 1 * factor, 0);
+                if (updateSpeeCurrentTime > 0)
+                {
+                    updateSpeeCurrentTime -= Time.deltaTime;
+                    factor = 0.04f;
+                    moveVectorHorizontal = new Vector3(1 * factor, 0, 0);
+                    moveVectorVertical = new Vector3(0, 1 * factor, 0);
+                }
+                else
+                {
+                    updateSpeed = false;
+                    factor = 0.01f;
+                    moveVectorHorizontal = new Vector3(1 * factor, 0, 0);
+                    moveVectorVertical = new Vector3(0, 1 * factor, 0);
+                }
             }
-            else
+
+            if (Input.GetKey(KeyCode.D))
             {
-                updateSpeed = false;
-                factor = 0.01f;
-                moveVectorHorizontal = new Vector3(1 * factor, 0, 0);
-                moveVectorVertical = new Vector3(0, 1 * factor, 0);
+                transform.position += moveVectorHorizontal;
+
+                spriteRenderer.flipX = true;
+
             }
-        }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += moveVectorHorizontal;
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position -= moveVectorHorizontal;
 
-            spriteRenderer.flipX = true;
+                spriteRenderer.flipX = false;
+            }
 
-        }
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position += moveVectorVertical;
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position -= moveVectorHorizontal;
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.position -= moveVectorVertical;
+            }
 
-            spriteRenderer.flipX = false;
-        }
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                transform.position = jumpVector;
+            }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += moveVectorVertical;
-        }
+            if (trunckTouch)
+            {
+                if (transform.position.x < 0)
+                    transform.position += new Vector3(0, 0.01f, 0);
+                else
+                    transform.position -= new Vector3(0, 0.01f, 0);
+            }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position -= moveVectorVertical;
-        }
+            else if (secondTrunckTouch)
+            {
+                if (transform.position.x < 0)
+                    transform.position += new Vector3(0, 0.01f, 0);
+                else
+                    transform.position -= new Vector3(0, 0.01f, 0);
+            }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            transform.position = jumpVector;
-        }
-
-        if (trunckTouch)
-        {
-            if(transform.position.x < 0)
-                transform.position += new Vector3(0, 0.01f, 0);
-            else
-                transform.position -= new Vector3(0, 0.01f, 0);
-        }
-
-        else if (secondTrunckTouch)
-        {
-            if (transform.position.x < 0)
-                transform.position += new Vector3(0, 0.01f, 0);
-            else
-                transform.position -= new Vector3(0, 0.01f, 0);
-        }
-
-        if (riverTouch && !trunckTouch && !secondTrunckTouch)
-        {
-            if (chickenCount > 0)
-                transform.position = GetNewPosition();
+            if (riverTouch && !trunckTouch && !secondTrunckTouch && chickenCount > 0)
+            {
+                if (chickenCount > 0)
+                {
+                    transform.position = GetNewPosition();
+                    eventSystem.OnChickenCount.Invoke();
+                }
+            }
         }
 
     }
@@ -117,7 +123,9 @@ public class PlayerController : MonoBehaviour
         {
             eventSystem.OnChickenCount.Invoke();
             if (chickenCount > 0)
+            {
                 transform.position = GetNewPosition();
+            }
         }
     }
 
@@ -140,7 +148,9 @@ public class PlayerController : MonoBehaviour
             eventSystem.OnChickenCount.Invoke();
 
             if(chickenCount > 0)
+            {
                 transform.position = GetNewPosition();
+            }
         }
 
         if (collision.gameObject.CompareTag("Tree"))
@@ -159,8 +169,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("RIVER");
             riverTouch = true;
-            if (!trunckTouch && !secondTrunckTouch && chickenCount > 0)
-                transform.position = GetNewPosition();
         }
 
     }
@@ -193,6 +201,11 @@ public class PlayerController : MonoBehaviour
     float GetRandom(int min, int max)
     {
         return UnityEngine.Random.Range(min, max);
+    }
+
+    int GetRandomPrefabType(int max)
+    {
+        return UnityEngine.Random.Range(0, max);
     }
 
 }

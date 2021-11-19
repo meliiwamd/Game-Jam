@@ -436,7 +436,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Chickens Left: '
+  m_Text: 'Animals Left: '
 --- !u!222 &79034901
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1747,7 +1747,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 25
+  m_Text: 0
 --- !u!222 &549057023
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2849,6 +2849,7 @@ MonoBehaviour:
   treeRight: {fileID: 3082119332471335779, guid: a792484f156476a418080afdd954174b,
     type: 3}
   timerMaxTime: 2
+  player: {fileID: 910425968}
 --- !u!1 &1140729731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2961,9 +2962,13 @@ MonoBehaviour:
   prefabs:
   - {fileID: 152024518931504032, guid: f9dbca0d43a57eb48a147917b537950f, type: 3}
   - {fileID: 800236332924427839, guid: 8a212878e9f52204cbd730041c86f94d, type: 3}
+  - {fileID: 5068156660560289723, guid: 77a1b932d8c01cb4ebd995bf66e22436, type: 3}
+  - {fileID: 735738471317580216, guid: 2215eb7dae8c756488f822b198609444, type: 3}
+  - {fileID: 5319403505067945803, guid: e4c45e76dd1534e45abbe340f108e299, type: 3}
   plumage: {fileID: 8885872639162645362, guid: bcf04842c8d36854aa854787f3912b4f, type: 3}
   timerMaxTime: 2
-  timerDimondMaxTime: 10000000
+  timerDimondMaxTime: 500000000
+  player: {fileID: 910425968}
 --- !u!212 &1160417078
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4577,6 +4582,7 @@ MonoBehaviour:
   treeRight: {fileID: 3082119332471335779, guid: a792484f156476a418080afdd954174b,
     type: 3}
   timerMaxTime: 2
+  player: {fileID: 910425968}
 --- !u!1 &1741932760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,10 +4778,12 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7580862185815965788, guid: 05e9eb5f12bee4c4fad9cec02aa7dcaa, type: 3}
   - {fileID: 1107603080719948646, guid: 520c15bdaf1e1ae40ba8535e44b51184, type: 3}
-  - {fileID: 5159591940031382437, guid: 9a4487c259e37934b893691875ac0317, type: 3}
+  - {fileID: 3813478132900414430, guid: 8e7600d676cd8e04b8f150f03de68712, type: 3}
+  - {fileID: 5068156660560289723, guid: 77a1b932d8c01cb4ebd995bf66e22436, type: 3}
   plumage: {fileID: 8885872639162645362, guid: bcf04842c8d36854aa854787f3912b4f, type: 3}
   timerMaxTime: 2
-  timerDimondMaxTime: 10
+  timerDimondMaxTime: 20
+  player: {fileID: 910425968}
 --- !u!212 &1761781092
 SpriteRenderer:
   m_ObjectHideFlags: 0

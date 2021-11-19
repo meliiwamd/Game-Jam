@@ -9,6 +9,8 @@ public class TreePlacer : MonoBehaviour
 
     public float timerMaxTime;
     private float currentTimerValue;
+
+    public PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,28 +20,31 @@ public class TreePlacer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentTimerValue > 0)
+        if (player.chickenCount > 0)
         {
-            currentTimerValue -= Time.deltaTime;
-        }
-        else
-        {
-            GameObject go;
-
-            
-            if (transform.position.x < 0)
+            if (currentTimerValue > 0)
             {
-                go = Instantiate(tree);
-                go.transform.position = new Vector3(-0.4f, transform.position.y, transform.position.z);
+                currentTimerValue -= Time.deltaTime;
             }
             else
             {
-                go = Instantiate(treeRight);
-                go.transform.position = new Vector3(0.4f, transform.position.y, transform.position.z);
-            }
+                GameObject go;
 
-            // reset timer
-            currentTimerValue = timerMaxTime;
+
+                if (transform.position.x < 0)
+                {
+                    go = Instantiate(tree);
+                    go.transform.position = new Vector3(-0.4f, transform.position.y, transform.position.z);
+                }
+                else
+                {
+                    go = Instantiate(treeRight);
+                    go.transform.position = new Vector3(0.4f, transform.position.y, transform.position.z);
+                }
+
+                // reset timer
+                currentTimerValue = timerMaxTime;
+            }
         }
     }
    
