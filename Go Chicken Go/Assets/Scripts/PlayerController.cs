@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
             if (riverTouch && !trunckTouch && !secondTrunckTouch && chickenCount > 0)
             {
+                riverTouch = false;
                 if (chickenCount > 0)
                 {
                     transform.position = GetNewPosition();
@@ -195,7 +196,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetNewPosition()
     {
-        return new Vector3(-4.75f, GetRandom(-4, 4), transform.position.z);
+        return new Vector3(-5f, 0.7f, transform.position.z);
     }
 
     float GetRandom(int min, int max)
