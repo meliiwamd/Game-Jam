@@ -10,6 +10,7 @@ TagManager:
   - Feather
   - DeathCar
   - Tree
+  - TreeRight
   layers:
   - Default
   - TransparentFX

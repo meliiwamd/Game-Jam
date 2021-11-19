@@ -50,7 +50,7 @@ public class CarPlacer : MonoBehaviour
             GameObject go;
 
             go = Instantiate(plumage);
-            go.transform.position = new Vector3(GetRandomDimond(-3, 3), GetRandomDimond(0, 4), transform.position.z);
+            go.transform.position = new Vector3(GetRandomDimond(-3, 3), GetRandomDimond(-3, 3), transform.position.z);
 
             // reset timer
             currentDimondTimerValue = timerDimondMaxTime;

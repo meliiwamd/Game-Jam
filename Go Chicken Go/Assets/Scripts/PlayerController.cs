@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private bool riverTouch = false;
     private bool trunckTouch = false;
+    private bool secondTrunckTouch = false;
 
     private bool updateSpeed = false;
     private float updateSpeedMaxTime = 8;
@@ -43,14 +44,14 @@ public class PlayerController : MonoBehaviour
             if(updateSpeeCurrentTime > 0)
             {
                 updateSpeeCurrentTime -= Time.deltaTime;
-                factor = 0.1f;
+                factor = 0.04f;
                 moveVectorHorizontal = new Vector3(1 * factor, 0, 0);
                 moveVectorVertical = new Vector3(0, 1 * factor, 0);
             }
             else
             {
                 updateSpeed = false;
-                factor = 0.03f;
+                factor = 0.01f;
                 moveVectorHorizontal = new Vector3(1 * factor, 0, 0);
                 moveVectorVertical = new Vector3(0, 1 * factor, 0);
             }
@@ -86,6 +87,28 @@ public class PlayerController : MonoBehaviour
             transform.position = jumpVector;
         }
 
+        if (trunckTouch)
+        {
+            if(transform.position.x < 0)
+                transform.position += new Vector3(0, 0.01f, 0);
+            else
+                transform.position -= new Vector3(0, 0.01f, 0);
+        }
+
+        else if (secondTrunckTouch)
+        {
+            if (transform.position.x < 0)
+                transform.position += new Vector3(0, 0.01f, 0);
+            else
+                transform.position -= new Vector3(0, 0.01f, 0);
+        }
+
+        if (riverTouch && !trunckTouch && !secondTrunckTouch)
+        {
+            if (chickenCount > 0)
+                transform.position = GetNewPosition();
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -93,7 +116,8 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Car"))
         {
             eventSystem.OnChickenCount.Invoke();
-            //Destroy(this.gameObject);
+            if (chickenCount > 0)
+                transform.position = GetNewPosition();
         }
     }
 
@@ -114,20 +138,61 @@ public class PlayerController : MonoBehaviour
             score += 400;
             eventSystem.OnScore.Invoke();
             eventSystem.OnChickenCount.Invoke();
+
+            if(chickenCount > 0)
+                transform.position = GetNewPosition();
+        }
+
+        if (collision.gameObject.CompareTag("Tree"))
+        {
+            Debug.Log("Tree");
+             trunckTouch = true;
+        }
+
+        if (collision.gameObject.CompareTag("TreeRight"))
+        {
+            Debug.Log("TreeRight");
+            secondTrunckTouch = true;
         }
 
         if (collision.gameObject.CompareTag("River"))
         {
             Debug.Log("RIVER");
-
-            //Destroy(this.gameObject);
+            riverTouch = true;
+            if (!trunckTouch && !secondTrunckTouch && chickenCount > 0)
+                transform.position = GetNewPosition();
         }
 
     }
 
-    private void OnCollision2D(Collision2D other)
-    {
-
-    }
     
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Tree"))
+        {
+            Debug.Log("Tree out");
+            trunckTouch = false;
+        }
+        if (collision.gameObject.CompareTag("TreeRight"))
+        {
+            Debug.Log("Tree 2 out");
+            secondTrunckTouch = false;
+        }
+        if (collision.gameObject.CompareTag("River"))
+        {
+            Debug.Log("River out");
+            riverTouch = false;
+        }
+    }
+
+    private Vector3 GetNewPosition()
+    {
+        return new Vector3(-4.75f, GetRandom(-4, 4), transform.position.z);
+    }
+
+    float GetRandom(int min, int max)
+    {
+        return UnityEngine.Random.Range(min, max);
+    }
+
 }
