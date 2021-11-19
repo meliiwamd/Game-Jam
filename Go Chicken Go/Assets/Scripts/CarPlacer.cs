@@ -9,10 +9,13 @@ public class CarPlacer : MonoBehaviour
 
     public float timerMaxTime;
     private float currentTimerValue;
+    public float timerDimondMaxTime;
+    private float currentDimondTimerValue;
     // Start is called before the first frame update
     void Start()
     {
         currentTimerValue = timerMaxTime;
+        currentDimondTimerValue = timerDimondMaxTime;
     }
 
     // Update is called once per frame
@@ -37,6 +40,20 @@ public class CarPlacer : MonoBehaviour
 
             // reset timer
             currentTimerValue = timerMaxTime;
+        }
+        if (currentDimondTimerValue > 0)
+        {
+            currentDimondTimerValue -= Time.deltaTime;
+        }
+        else
+        {
+            GameObject go;
+
+            go = Instantiate(plumage);
+            go.transform.position = new Vector3(GetRandomDimond(-3, 3), GetRandomDimond(0, 4), transform.position.z);
+
+            // reset timer
+            currentDimondTimerValue = timerDimondMaxTime;
         }
     }
 
