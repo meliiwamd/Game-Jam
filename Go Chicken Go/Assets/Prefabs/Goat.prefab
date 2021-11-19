@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 717258172170779949}
   - component: {fileID: 6888296398109456498}
   - component: {fileID: -40870183252793430}
+  - component: {fileID: -2233730099011932728}
   m_Layer: 0
   m_Name: Goat
   m_TagString: Untagged
@@ -130,3 +131,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-2233730099011932728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926232347318065005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed1c011ed319ae42a924b66c505d854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  eventSystem: {fileID: 0}
+  factor: 0.01
+  chickenCount: 3
+  spriteRenderer: {fileID: 0}
+  rb: {fileID: 0}

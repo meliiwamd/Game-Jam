@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private float updateSpeeCurrentTime;
     public float factor = 0.01f;
 
-    private bool newChicken = false;
     public int chickenCount = 3;
 
     public SpriteRenderer spriteRenderer;
@@ -37,7 +36,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(chickenCount > 0)
+        if (chickenCount > 0)
         {
             jumpVector = new Vector3(transform.position.x + 1, transform.position.y, 0);
 
@@ -114,6 +113,8 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        else
+            Destroy(this.gameObject);
 
     }
 
@@ -142,7 +143,6 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Saved"))
         {
-            newChicken = true;
             score += 400;
             eventSystem.OnScore.Invoke();
             eventSystem.OnChickenCount.Invoke();

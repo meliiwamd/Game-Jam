@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8345482940735478907}
   - component: {fileID: 6199204972551423891}
   - component: {fileID: -5411815373869948080}
+  - component: {fileID: 1768588219722578046}
   m_Layer: 0
   m_Name: Squirrel
   m_TagString: Untagged
@@ -130,3 +131,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1768588219722578046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3631110162650198982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed1c011ed319ae42a924b66c505d854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  eventSystem: {fileID: 0}
+  factor: 0.01
+  chickenCount: 3
+  spriteRenderer: {fileID: 0}
+  rb: {fileID: 0}

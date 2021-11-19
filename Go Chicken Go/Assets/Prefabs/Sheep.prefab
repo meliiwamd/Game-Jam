@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3697077839784672860}
   - component: {fileID: -6732891034891356842}
   - component: {fileID: -3238449071051488692}
+  - component: {fileID: -5115473111217251647}
   m_Layer: 0
   m_Name: Sheep
   m_TagString: Untagged
@@ -130,3 +131,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-5115473111217251647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2699565592647869435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed1c011ed319ae42a924b66c505d854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  eventSystem: {fileID: 0}
+  factor: 0.01
+  chickenCount: 3
+  spriteRenderer: {fileID: 0}
+  rb: {fileID: 0}
